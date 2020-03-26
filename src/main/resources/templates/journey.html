@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Journeys</title>
+</head>
+<body>
+    <div th:switch="${journeys}">
+        <h2 th:case="null">No journeys yet!</h2>
+        <div th:case="*">
+            <h2>Journeys</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Origin</th>
+                    <th>Destination</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="journey : ${journeys}">
+                    <td th:text="${journey.origin}"></td>
+                    <td th:text="${journey.destination}"></td>
+                    <td><a th:href="@{/journey/edit/{id}(id=${journey.id})}">Edit</a></td>
+                    <td><a th:href="@{/journey/delete/{id}(id=${journey.id})}">Delete</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <p><a href="/journey/add">Add a new journey</a></p>
+    </div>
+</body>
+</html>

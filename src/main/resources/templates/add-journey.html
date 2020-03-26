@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <form action="#" method="post" th:action="@{/journey/add}" th:object="${journey}">
+            <label for="origin">Origin</label>
+            <input id="origin" placeholder="Origin" th:field="*{origin}" type="text">
+            <span th:errors="*{origin}" th:if="${#fields.hasErrors('origin')}"></span>
+
+            <label for="destination">Destination</label>
+            <input id="destination" placeholder="Destination" th:field="*{destination}" type="text">
+            <span th:errors="*{destination}" th:if="${#fields.hasErrors('destination')}"></span>
+            <input type="submit" value="Add Journey">
+        </form>
+    </body>
+</html>
